@@ -42,3 +42,16 @@ if eppenhiv:
     print('Várakozók száma:', len(eppenhiv)- 1, "és a beszélő az a", hivasok.index(eppenhiv[0])+ 1, ". hívó")
 else:
     print('Nem volt beszélő')
+    
+munkaido_eleje = mpbe(8,0,0)
+munkaido_vege =  mpbe(12,0,0)
+utolso_beszelo = 0
+while hivasok[utolso_beszelo]['vege'] < munkaido_eleje:
+    utolso_beszelo += 1
+for index, hivas in enumerate(hivasok):
+    if hivas['vege'] > hivasok[utolso_beszelo]['vege'] and hivas['eleje'] < munkaido_vege:
+        utolso_beszelo_varakozas = max(hivasok[utolso_beszelo]['vege'] - hivas['eleje'], 0)
+        utolso_beszelo = index
+
+print("6. feladat")
+print("Az utolsó telefonáló adata a(z)", utolso_beszelo+1 ,"sorban vannak",utolso_beszelo_varakozas,"másodpercig várt.")
